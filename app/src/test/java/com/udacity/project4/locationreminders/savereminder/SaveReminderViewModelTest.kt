@@ -45,12 +45,12 @@ class SaveReminderViewModelTest {
     }
 
     @After
-    fun tearDown() {
+    fun     SetupDown() {
         stopKoin()
     }
 
     @Test
-    fun validateEnteredData_EmptyTitleAndUpdateSnackBar() {
+    fun validateEnteredData_TitleIsEmptyAndUpdateSnackBar() {
         val reminder = ReminderDataItem("", "Description", "My work office ", 10.37625, 6.54343)
 
         Truth.assertThat(viewModel.validateEnteredData(reminder)).isFalse()
@@ -58,7 +58,7 @@ class SaveReminderViewModelTest {
     }
 
     @Test
-    fun validateEnteredData_EmptyLocationAndUpdateSnackBar() {
+    fun validateEnteredData_LocationIsEmptyAndUpdateSnackBar() {
         val reminder = ReminderDataItem("Title", "Description", "", 12.32323, 10.54343)
 
         Truth.assertThat(viewModel.validateEnteredData(reminder)).isFalse()
@@ -67,7 +67,7 @@ class SaveReminderViewModelTest {
 
 
     @Test
-    fun saveReminder_showLoading(){
+    fun AddReminder_showLoading(){
         val reminder = ReminderDataItem("Title", "Description", "hospital ", 7.32323, 6.54343)
         mainCoroutine.pauseDispatcher()
         viewModel.saveReminder(reminder)

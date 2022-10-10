@@ -43,14 +43,14 @@ class RemindersListViewModelTest {
     }
 
     @After
-    fun tearDown() {
+    fun SetupDown() {
         stopKoin()
     }
 
 
 
     @Test
-    fun loadReminders_showLoading() {
+    fun showLoadingDuringGetReminders() {
         MainCoroutine.pauseDispatcher()
 
         viewModel.loadReminders()
@@ -72,7 +72,7 @@ class RemindersListViewModelTest {
    To check that, used Junit assert that  function
    to check if a specific value match to an expected one*/
     @Test
-    fun loadReminders_remainderListNotEmpty() = MainCoroutine.runBlockingTest  {
+    fun GetDataremainder_NotEmpty() = MainCoroutine.runBlockingTest  {
         val reminder = ReminderDTO("My application ", "project 4 data ", "cairo", 15.454202, 17.599545)
 
         remindersRepository.saveReminder(reminder)
@@ -84,7 +84,7 @@ class RemindersListViewModelTest {
 
     // TEST DURING load reminders and control threadings by coroutines and its dispatcher
     @Test
-    fun loadReminders_updateSnackBarValue() {
+    fun updateSnackBarValueDuringGetReminders() {
         MainCoroutine.pauseDispatcher()
 
         remindersRepository.error_flag = true
