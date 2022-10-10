@@ -13,6 +13,7 @@ android {
         applicationId "com.udacity.project4"
         minSdkVersion rootProject.minSdkVersion
         targetSdkVersion rootProject.targetSdkVersion
+        multiDexEnabled = true
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -23,8 +24,10 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
     kotlinOptions {
         jvmTarget = "1.8"
+        languageVersion = "1.4"
     }
     testOptions.unitTests {
         includeAndroidResources = true
@@ -126,5 +129,9 @@ dependencies {
     implementation 'com.firebaseui:firebase-ui-auth:7.1.1'
 
 // to enable  multidex for apps with over 64K methods
-    implementation("androidx.multidex:multidex:$multidex_version")
+    //implementation("androidx.multidex:multidex:$multidex_version")
+    implementation("com.android.support:multidex:1.0.3")
 }
+
+
+
